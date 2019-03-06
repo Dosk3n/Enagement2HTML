@@ -83,7 +83,7 @@ def JumbotronHTML(savefilename, hostdata):
     htmlfile.close()
 
 def MainNotesHTML(savefilename, hostdata):
-    if("notes" in hostdata):
+    if hostdata["notes"] is not None:
         code = """
             <div class="card">
             <h5 class="card-header">Notes</h5>
@@ -97,7 +97,7 @@ def MainNotesHTML(savefilename, hostdata):
         htmlfile.close()
 
 def CredentialsHTML(savefilename, hostdata):
-    if("credentials" in hostdata):
+    if hostdata["credentials"] is not None:
         htmlfile = open(savefilename, "a")
         maincardstart = """
         <br>
