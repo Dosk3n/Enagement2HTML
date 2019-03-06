@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>10.10.10.123</title>
+  </head>
+  <body>
+
+  <div class="container">
+    
+        <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">FriendZone</h1>
+            <p class="lead">An HTML report generated from the JSON results of https://pentest.ws.</p>
+        </div>
+        </div>
+    
+            <div class="card">
+            <h5 class="card-header">Notes</h5>
+            <div class="card-body">
+                <p class="card-text">SMB allows guest uploads to /etc/Development<br />
+LFI: https://administrator1.friendzone.red/dashboard.php?image_id=a.jpg&amp;pagename={LFI}<br />
+Root: /usr/lib/python2.7/os.py is owned by root. A cronjob is running a script that imports this file. Add your own python code in here to be ran as root.</p>
+            </div>
+            </div>
+        
+        <br>
+        <div class="card">
+            <h5 class="card-header">Credentials</h5>
+            <div class="card-body">
+            <div class="row">
+        
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">https://administrator1.friendzone.red</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                            <th scope="row">Username</th>
+                            <td>admin</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Password</th>
+                            <td>WORKWORKHhallelujah@#</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Fullname</th>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Hash</th>
+                            <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ssh</h5>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                            <th scope="row">Username</th>
+                            <td>friend</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Password</th>
+                            <td>Agpyu12!0.213$</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Fullname</th>
+                            <td></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Hash</th>
+                            <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+        </div>
+            </div>
+            </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

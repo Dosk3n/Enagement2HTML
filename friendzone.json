@@ -1,0 +1,111 @@
+{
+    "export_timestamp": "2019-03-06T14:26:26.062Z",
+    "export_type": "Host",
+    "export_object_id": "46ynB3xg",
+    "ip": "10.10.10.123",
+    "label": "FriendZone",
+    "os": null,
+    "type": "server",
+    "os_type": "Linux",
+    "notes": "SMB allows guest uploads to /etc/Development<br />\nLFI: https://administrator1.friendzone.red/dashboard.php?image_id=a.jpg&amp;pagename={LFI}<br />\nRoot: /usr/lib/python2.7/os.py is owned by root. A cronjob is running a script that imports this file. Add your own python code in here to be ran as root.",
+    "note_pages": null,
+    "flags": [
+        {
+            "flagged": false,
+            "reviewed": false,
+            "interested": false,
+            "not_interested": false,
+            "out_of_scope": false,
+            "shell": true,
+            "root": true
+        }
+    ],
+    "ports": [
+        {
+            "port": 21,
+            "service": "ftp",
+            "protocol": "tcp",
+            "version": "vsftpd 3.0.3",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 22,
+            "service": "ssh",
+            "protocol": "tcp",
+            "version": "OpenSSH 7.6p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 53,
+            "service": "domain",
+            "protocol": "tcp",
+            "version": "ISC BIND 9.11.3-1ubuntu1.2 (Ubuntu Linux)",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 80,
+            "service": "http",
+            "protocol": "tcp",
+            "version": "Apache httpd 2.4.29 ((Ubuntu))",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 139,
+            "service": "netbios-ssn",
+            "protocol": "tcp",
+            "version": "Samba smbd 3.X - 4.X (workgroup: WORKGROUP)",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 443,
+            "service": "http",
+            "protocol": "tcp",
+            "version": "Apache httpd 2.4.29",
+            "status": null,
+            "notes": "https://administrator1.friendzone.red",
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 445,
+            "service": "netbios-ssn",
+            "protocol": "tcp",
+            "version": "Samba smbd 4.7.6-Ubuntu (workgroup: WORKGROUP)",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        }
+    ],
+    "credentials": [
+        {
+            "service": "https://administrator1.friendzone.red",
+            "username": "admin",
+            "password": "WORKWORKHhallelujah@#",
+            "fullname": "",
+            "hash": ""
+        },
+        {
+            "service": "ssh",
+            "username": "friend",
+            "password": "Agpyu12!0.213$",
+            "fullname": "",
+            "hash": ""
+        }
+    ]
+}
