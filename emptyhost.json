@@ -1,0 +1,25 @@
+{
+    "export_timestamp": "2019-03-07T10:21:40.977Z",
+    "export_type": "Host",
+    "export_object_id": "56VlLyov",
+    "ip": "10.10.10.10",
+    "label": "",
+    "os": null,
+    "type": "question",
+    "os_type": "question",
+    "notes": null,
+    "note_pages": null,
+    "flags": [
+        {
+            "flagged": false,
+            "reviewed": false,
+            "interested": false,
+            "not_interested": false,
+            "out_of_scope": false,
+            "shell": false,
+            "root": false
+        }
+    ],
+    "ports": null,
+    "credentials": null
+}

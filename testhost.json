@@ -1,0 +1,85 @@
+{
+    "export_timestamp": "2019-03-07T09:40:19.035Z",
+    "export_type": "Host",
+    "export_object_id": "joK5EQ60",
+    "ip": "10.10.10.121",
+    "label": "TestBox",
+    "os": "Ubuntu Xenial",
+    "type": "server",
+    "os_type": "Linux",
+    "notes": "Host notes main tab goes here on this data.&nbsp;Aenean vel commodo nunc. Vestibulum tincidunt viverra imperdiet. Nunc ac orci nec erat scelerisque iaculis sit amet eget leo. Phasellus ornare rutrum dolor. Vivamus ut rutrum orci. Morbi massa ipsum, consequat aliquam interdum sit amet, efficitur nec erat. Sed metus sem, tincidunt quis sem id, tristique facilisis nulla.",
+    "note_pages": null,
+    "flags": [
+        {
+            "flagged": true,
+            "reviewed": true,
+            "interested": false,
+            "not_interested": false,
+            "out_of_scope": true,
+            "shell": true,
+            "root": true
+        }
+    ],
+    "ports": [
+        {
+            "port": 22,
+            "service": "ssh",
+            "protocol": "tcp",
+            "version": "OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)",
+            "status": "Needs Review",
+            "notes": "This is the port notes. The status is that it needs review. Donec et odio rhoncus, egestas orci nec, volutpat orci. Vivamus non velit porta, porttitor augue eget, imperdiet orci. Vestibulum dignissim mi turpis, eget gravida velit dapibus ac.",
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 80,
+            "service": "http",
+            "protocol": "tcp",
+            "version": "Apache httpd 2.4.18 ((Ubuntu))",
+            "status": null,
+            "notes": null,
+            "note_pages": null,
+            "checklist": null
+        },
+        {
+            "port": 3000,
+            "service": "http",
+            "protocol": "tcp",
+            "version": "Node.js Express framework",
+            "status": null,
+            "notes": "Port notes for 3000!<br />\n<br />\nPhasellus nec mi vitae leo egestas hendrerit. Phasellus quis sapien sed nunc condimentum aliquam. Aenean auctor, libero et consectetur faucibus, quam tellus commodo elit, sit amet gravida dui arcu nec risus. In eget mattis enim, mollis tempus dolor. Nullam ac neque augue. Aenean malesuada mi at lobortis molestie. Cras vitae ligula ipsum. Donec dictum pulvinar urna vitae faucibus. Phasellus faucibus nisi vestibulum efficitur volutpat. Maecenas sodales suscipit velit, sed auctor nisl pulvinar sed. Ut efficitur turpis eu efficitur facilisis.",
+            "note_pages": null,
+            "checklist": null
+        }
+    ],
+    "credentials": [
+        {
+            "service": "http://hackerewordpress.box",
+            "username": "Johnsonpidly",
+            "password": "",
+            "fullname": " John Bishop",
+            "hash": "33c5d4954da881814420f3ba39772644"
+        },
+        {
+            "service": "http://hackerewordpress.box",
+            "username": "Scredap",
+            "password": "password123",
+            "fullname": "Ricky Boon",
+            "hash": "482c811da5d5b4bc6d497ffa98491e38"
+        },
+        {
+            "service": "http://website.com",
+            "username": "This2s",
+            "password": "Pazzwidy",
+            "fullname": "",
+            "hash": ""
+        },
+        {
+            "service": "ssh",
+            "username": "SSHUserBob",
+            "password": "BobidyPas5",
+            "fullname": "",
+            "hash": ""
+        }
+    ]
+}
