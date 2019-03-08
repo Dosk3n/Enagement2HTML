@@ -103,6 +103,8 @@ def JumbotronHTML(savefilename, hostdata):
     if hostdata["label"] is not None:
         if(hostdata["label"] != ""):
             title = hostdata["label"]
+        else:
+            title = hostdata["ip"]
 
     flagbadges = GetHostFlagsHTML(hostdata)
 
@@ -131,6 +133,25 @@ def GetPortInfoHTML(hostdata):
             status   = ""
             if port["port"] is not None:
                 portnum = port["port"]
+            if port["service"] is not None:
+                service = port["service"]
+            if port["protocol"] is not None:
+                protocol = port["protocol"]
+            if port["version"] is not None:
+                version = port["version"]
+            if port["status"] is not None:
+                if(port["status"] == "Needs Review"):
+                    status = '<span class="badge badge-primary">Needs Review</span>'
+                if(port["status"] == "Needs Credentials"):
+                    status = '<span class="badge badge-dark">Needs Credentials</span>'
+                if(port["status"] == "Checked"):
+                    status = '<span class="badge badge-info">Checked</span>'
+                if(port["status"] == "Vulnerable"):
+                    status = '<span class="badge badge-warning">Vulnerable</span>'
+                if(port["status"] == "Owned"):
+                    status = '<span class="badge badge-danger">Owned</span>'
+            else:
+                status = '<span class="badge badge-secondary">Unknown</span>'
 
             code = """
                                     <tr>
@@ -138,7 +159,7 @@ def GetPortInfoHTML(hostdata):
                                     <td>""" + str(service) + """</td>
                                     <td>""" + str(protocol) + """</td>
                                     <td>""" + str(version) + """</td>
-                                    <td>""" + str(status) + """<span class="badge badge-danger">Owned</span></td>
+                                    <td>""" + str(status) + """</td>
                                     </tr>
             """
             portinfohtml = portinfohtml + code
@@ -219,71 +240,129 @@ def HostAndPortHTML(savefilename, hostdata):
 def MainNotesHTML(savefilename, hostdata):
     if hostdata["notes"] is not None:
         code = """
-            <div class="card">
-            <h5 class="card-header">Notes</h5>
-            <div class="card-body">
-                <p class="card-text">""" + hostdata["notes"] + """</p>
+            <!-- NOTES -->
+            <div class="container">
+                <div class="card">
+                    <h5 class="card-header">Host Notes</h5>
+                    <div class="card-body">
+                        <p class="card-text">""" + hostdata["notes"] + """</p>
+                    </div>
+                </div>
             </div>
-            </div>
+
+            <br>
         """
         htmlfile = open(savefilename, "a")
         htmlfile.write(code)
         htmlfile.close()
 
+def GetPortNotesHTML(hostdata):
+    portnotehtml = ""
+    if hostdata["ports"] is not None:
+        portdata = hostdata["ports"]
+        for port in portdata:
+            if port["notes"] is not None:
+                portnum  = "Unknown Port Number"
+                service  = "Unknown Service"
+                portnote = port["notes"]
+                if port["port"] is not None:
+                    portnum = port["port"]
+                if port["service"] is not None:
+                    service = port["service"]
+                code = """
+                        <h5>""" + str(portnum) + """ : """ + str(service) + """</h5>
+                        <p class="card-text">""" + portnote + """</p>
+                """
+                portnotehtml = portnotehtml + code
+
+    if(portnotehtml == ""):
+        return False
+    else:
+        return portnotehtml
+
+def PortNotes(savefilename, hostdata):
+    if hostdata["ports"] is not None:
+        portnotehtml = GetPortNotesHTML(hostdata)
+        if(portnotehtml):
+            code = """
+                <!-- PORT NOTES -->
+                <div class="container">
+                    <div class="card">
+                        <h5 class="card-header">Port Notes</h5>
+                        <div class="card-body">
+                            """ + portnotehtml + """
+                        </div>
+                    </div>
+                </div>
+                
+                <br>
+            """
+            htmlfile = open(savefilename, "a")
+            htmlfile.write(code)
+            htmlfile.close()
+
+def GetCredHTML(hostdata):
+    htmlcreddata = ""
+    creds = hostdata["credentials"]
+    credcounter = 0
+    for cred in creds:
+        service  = str(cred["service"])
+        username = str(cred["username"])
+        password = str(cred["password"])
+        fullname = str(cred["fullname"])
+        pwhash   = str(cred["hash"])
+
+        if(credcounter == 0):
+            htmlcreddata = htmlcreddata + '<div class="row">\n'
+            credcounter = 1
+
+        data = """
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <h5 class="card-header">""" + service + """</h5>
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>Username: </strong> """ + username + """</p>
+                                        <p class="card-text"><strong>Password: </strong> """ + password + """</p>
+                                        <p class="card-text"><strong>Full Name: </strong> """ + fullname + """</p>
+                                        <p class="card-text"><strong>Hash: </strong> """ + pwhash + """</p>
+                                    </div>
+                                </div>
+                            </div>
+        """
+        htmlcreddata = htmlcreddata + data
+
+        if(credcounter == 2):
+            htmlcreddata = htmlcreddata + """ 
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+            """
+            credcounter = 0
+
+        credcounter = credcounter + 1
+
+    return htmlcreddata
+
 def CredentialsHTML(savefilename, hostdata):
     if hostdata["credentials"] is not None:
-        htmlfile = open(savefilename, "a")
-        maincardstart = """
-        <br>
-        <div class="card">
-            <h5 class="card-header">Credentials</h5>
-            <div class="card-body">
-            <div class="row">
-        """
-        maincardend = """
-        </div>
-        </div>
-            </div>
-        """
-
-        htmlfile.write(maincardstart)
-
-
-        credentials = hostdata["credentials"]
-        for cred in credentials:
-            code = """
-            <div class="col-sm-6">
+        htmlcreddata = GetCredHTML(hostdata)
+        code = """
+            <!-- CREDENTIALS -->
+            <div class="container">
                 <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">""" + cred["service"] + """</h5>
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                            <th scope="row">Username</th>
-                            <td>""" + cred["username"] + """</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Password</th>
-                            <td>""" + cred["password"] + """</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Fullname</th>
-                            <td>""" + cred["fullname"] + """</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Hash</th>
-                            <td>""" + cred["hash"] + """</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h5 class="card-header">Credentials</h5>
+                    <div class="card-body">
+
+                        """ + htmlcreddata + """
+                        
+                    </div>
                 </div>
             </div>
-            """
-            htmlfile.write(code)
-        
-
-        htmlfile.write(maincardend)
+        """
+        htmlfile = open(savefilename, "a")
+        htmlfile.write(code)
         htmlfile.close()
 
 
@@ -293,6 +372,9 @@ def BuildHTML(savefilename, hostdata):
     WriteBootstrapHead(savefilename, hostdata)
     JumbotronHTML(savefilename, hostdata)
     HostAndPortHTML(savefilename, hostdata)
+    MainNotesHTML(savefilename, hostdata)
+    PortNotes(savefilename, hostdata)
+    CredentialsHTML(savefilename, hostdata)
     WriteBootstrapFoot(savefilename)
 
 
